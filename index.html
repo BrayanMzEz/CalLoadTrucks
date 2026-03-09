@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Calculadora de Peso para Trailers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Peso para Trailers</h1>
+        <p>Optimizada para uso móvil iOS</p>
+    </header>
+    
+    <div class="container">
+        <!-- Sección 1: Configuración de límites -->
+        <div class="section">
+            <h2 class="section-title">LÍMITES DE PESO MÁXIMO</h2>
+            
+            <div class="input-group">
+                <label for="max-front">Eje delantero (lbs)</label>
+                <input type="number" id="max-front" min="0" step="100">
+            </div>
+            
+            <div class="input-group">
+                <label for="max-fifth">Quinta rueda (lbs)</label>
+                <input type="number" id="max-fifth" min="0" step="100">
+            </div>
+            
+            <div class="input-group">
+                <label for="max-tractor">Tractor (lbs)</label>
+                <input type="number" id="max-tractor" min="0" step="100">
+            </div>
+            
+            <div class="input-group">
+                <label for="max-trailer">Trailer (lbs)</label>
+                <input type="number" id="max-trailer" min="0" step="100">
+            </div>
+            
+            <div class="input-group">
+                <label for="min-total">Peso mínimo total (lbs)</label>
+                <input type="number" id="min-total" min="0" step="100">
+            </div>
+            
+            <div class="input-group">
+                <label for="max-total">Peso máximo total (lbs)</label>
+                <input type="number" id="max-total" min="0" step="100">
+            </div>
+            
+            <div class="save-section">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="save-limits" checked>
+                    <label for="save-limits">Recordar estos valores</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección 2: Datos de carga actual -->
+        <div class="section calculation-section">
+            <h2 class="section-title">DATOS DE CARGA ACTUAL</h2>
+            
+            <div class="input-group">
+                <label for="current-front">Eje delantero (lbs)</label>
+                <input type="number" id="current-front" min="0" step="100" >
+                <div id="front-info" class="info-label"></div>
+            </div>
+            
+            <div class="input-group">
+                <label for="current-tractor">Tractor (lbs)</label>
+                <input type="number" id="current-tractor" min="0" step="100" >
+                <div id="tractor-info" class="info-label"></div>
+            </div>
+            
+            <div class="input-group">
+                <label for="current-fifth">Quinta rueda (lbs) <small>(Calculado automáticamente)</small></label>
+                <input type="number" id="current-fifth" min="0" step="100" readonly class="calculated">
+                <div id="fifth-info" class="info-label"></div>
+            </div>
+            
+            <div class="input-group">
+                <label for="current-total">Peso total (lbs)</label>
+                <input type="number" id="current-total" min="0" step="100" >
+                <div id="total-info" class="info-label"></div>
+            </div>
+            
+            <div class="input-group">
+                <label for="current-trailer">Trailer (lbs) <small>(Calculado si no se ingresa)</small></label>
+                <input type="number" id="current-trailer" min="0" step="100" >
+                <div id="trailer-info" class="info-label"></div>
+            </div>
+            
+            <button class="btn-clear" id="btn-clear">Limpiar valores actuales</button>
+        </div>
+        
+        <!-- Sección de resultados -->
+        <div class="result-display grange" id="result-display">
+            Peso total: <span id="total-weight">0</span> lbs
+        </div>
+    </div>
+    
+    <footer>
+        <p>Los límites de peso se guardarán si seleccionas "Recordar estos valores"</p>
+        <p>Diseñado para funcionar sin conexión a Internet</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
