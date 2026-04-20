@@ -3,100 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f1419">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Calculadora de Peso para Trailers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>Calculadora de Peso para Trailers</h1>
         <p>Optimizada para uso móvil iOS</p>
+        <div class="button-container">
+            <button id="btn-papera" class="top-button active">Papera</button>
+            <button id="btn-hopper" class="top-button">Hopper</button>
+            <button id="btn-rifers" class="top-button">Rifers</button>
+        </div>
     </header>
     
+
     <div class="container">
-        <!-- Sección 1: Configuración de límites -->
-        <div class="section">
-            <h2 class="section-title">LÍMITES DE PESO MÁXIMO</h2>
-            
-            <div class="input-group">
-                <label for="max-front">Eje delantero (lbs)</label>
-                <input type="number" id="max-front" min="0" step="100">
-            </div>
-            
-            <div class="input-group">
-                <label for="max-fifth">Quinta rueda (lbs)</label>
-                <input type="number" id="max-fifth" min="0" step="100">
-            </div>
-            
-            <div class="input-group">
-                <label for="max-tractor">Tractor (lbs)</label>
-                <input type="number" id="max-tractor" min="0" step="100">
-            </div>
-            
-            <div class="input-group">
-                <label for="max-trailer">Trailer (lbs)</label>
-                <input type="number" id="max-trailer" min="0" step="100">
-            </div>
-            
-            <div class="input-group">
-                <label for="min-total">Peso mínimo total (lbs)</label>
-                <input type="number" id="min-total" min="0" step="100">
-            </div>
-            
-            <div class="input-group">
-                <label for="max-total">Peso máximo total (lbs)</label>
-                <input type="number" id="max-total" min="0" step="100">
-            </div>
-            
-            <div class="save-section">
-                <div class="checkbox-group">
-                    <input type="checkbox" id="save-limits" checked>
-                    <label for="save-limits">Recordar estos valores</label>
+        <!-- Sección PAPERA -->
+        <div id="section-papera" class="mode-section active">
+            <div class="section">
+                <h2 class="section-title">LÍMITES MÁXIMOS - PAPERA</h2>
+                
+                <div class="input-group">
+                    <label for="papera-max-front">Eje delantero (lbs)</label>
+                    <input type="number" id="papera-max-front" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-max-fifth">Quinta rueda (lbs)</label>
+                    <input type="number" id="papera-max-fifth" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-max-tractor">Tractor (lbs)</label>
+                    <input type="number" id="papera-max-tractor" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-max-trailer">Trailer (lbs)</label>
+                    <input type="number" id="papera-max-trailer" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-min-total">Peso mínimo total (lbs)</label>
+                    <input type="number" id="papera-min-total" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-max-total">Peso máximo total (lbs)</label>
+                    <input type="number" id="papera-max-total" min="0" step="100">
+                </div>
+                
+                <div class="save-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="papera-save-limits" checked>
+                        <label for="papera-save-limits">Recordar estos valores</label>
+                    </div>
                 </div>
             </div>
+            
+            <div class="section calculation-section">
+                <h2 class="section-title">DATOS DE CARGA ACTUAL - PAPERA</h2>
+                
+                <div class="input-group">
+                    <label for="papera-current-front">Eje delantero (lbs)</label>
+                    <input type="number" id="papera-current-front" min="0" step="100">
+                    <div id="papera-front-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-current-tractor">Tractor (lbs)</label>
+                    <input type="number" id="papera-current-tractor" min="0" step="100">
+                    <div id="papera-tractor-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-current-fifth">Quinta rueda (lbs) <small>(Calculado)</small></label>
+                    <input type="number" id="papera-current-fifth" min="0" step="100" readonly class="calculated">
+                    <div id="papera-fifth-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-current-total">Peso total (lbs)</label>
+                    <input type="number" id="papera-current-total" min="0" step="100">
+                    <div id="papera-total-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="papera-current-trailer">Trailer (lbs) <small>(Calculado si no se ingresa)</small></label>
+                    <input type="number" id="papera-current-trailer" min="0" step="100">
+                    <div id="papera-trailer-info" class="info-label"></div>
+                </div>
+                
+                <button class="btn-clear" id="papera-btn-clear">Limpiar valores actuales</button>
+            </div>
+            
+            <div class="result-display grange" id="papera-result-display">
+                Peso total: <span id="papera-total-weight">0</span> lbs
+            </div>
         </div>
-        
-        <!-- Sección 2: Datos de carga actual -->
-        <div class="section calculation-section">
-            <h2 class="section-title">DATOS DE CARGA ACTUAL</h2>
-            
-            <div class="input-group">
-                <label for="current-front">Eje delantero (lbs)</label>
-                <input type="number" id="current-front" min="0" step="100" >
-                <div id="front-info" class="info-label"></div>
+
+        <!-- Sección HOPPER -->
+        <div id="section-hopper" class="mode-section">
+            <div class="section">
+                <h2 class="section-title">LÍMITES MÁXIMOS - HOPPER</h2>
+                
+                <div class="input-group">
+                    <label for="hopper-max-front">Eje delantero (lbs)</label>
+                    <input type="number" id="hopper-max-front" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-max-fifth">Quinta rueda (lbs)</label>
+                    <input type="number" id="hopper-max-fifth" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-max-tractor">Tractor (lbs)</label>
+                    <input type="number" id="hopper-max-tractor" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-max-trailer">Trailer (lbs)</label>
+                    <input type="number" id="hopper-max-trailer" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-max-tractor-trailer">Tractor+Trailer (lbs)</label>
+                    <input type="number" id="hopper-max-tractor-trailer" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-max-pup">Pup (lbs)</label>
+                    <input type="number" id="hopper-max-pup" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-min-total">Peso mínimo total (lbs)</label>
+                    <input type="number" id="hopper-min-total" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-max-total">Peso máximo total (lbs)</label>
+                    <input type="number" id="hopper-max-total" min="0" step="100">
+                </div>
+                
+                <div class="save-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="hopper-save-limits" checked>
+                        <label for="hopper-save-limits">Recordar estos valores</label>
+                    </div>
+                </div>
             </div>
             
-            <div class="input-group">
-                <label for="current-tractor">Tractor (lbs)</label>
-                <input type="number" id="current-tractor" min="0" step="100" >
-                <div id="tractor-info" class="info-label"></div>
+            <div class="section calculation-section">
+                <h2 class="section-title">DATOS DE CARGA ACTUAL - HOPPER</h2>
+                
+                <div class="input-group">
+                    <label for="hopper-current-front">Eje delantero (lbs)</label>
+                    <input type="number" id="hopper-current-front" min="0" step="100">
+                    <div id="hopper-front-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-current-tractor">Tractor (lbs)</label>
+                    <input type="number" id="hopper-current-tractor" min="0" step="100">
+                    <div id="hopper-tractor-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-current-fifth">Quinta rueda (lbs) <small>(Calculado)</small></label>
+                    <input type="number" id="hopper-current-fifth" min="0" step="100" readonly class="calculated">
+                    <div id="hopper-fifth-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-current-tractor-trailer">Tractor+Trailer (lbs)</label>
+                    <input type="number" id="hopper-current-tractor-trailer" min="0" step="100">
+                    <div id="hopper-tractor-trailer-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-current-trailer">Trailer (lbs) <small>(Calculado)</small></label>
+                    <input type="number" id="hopper-current-trailer" min="0" step="100" readonly class="calculated">
+                    <div id="hopper-trailer-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-current-total">Peso total (lbs)</label>
+                    <input type="number" id="hopper-current-total" min="0" step="100">
+                    <div id="hopper-total-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="hopper-current-pup">Pup (lbs)</label>
+                    <input type="number" id="hopper-current-pup" min="0" step="100">
+                    <div id="hopper-pup-info" class="info-label"></div>
+                </div>
+                
+                <button class="btn-clear" id="hopper-btn-clear">Limpiar valores actuales</button>
             </div>
             
-            <div class="input-group">
-                <label for="current-fifth">Quinta rueda (lbs) <small>(Calculado automáticamente)</small></label>
-                <input type="number" id="current-fifth" min="0" step="100" readonly class="calculated">
-                <div id="fifth-info" class="info-label"></div>
+            <div class="result-display grange" id="hopper-result-display">
+                Peso total: <span id="hopper-total-weight">0</span> lbs
             </div>
-            
-            <div class="input-group">
-                <label for="current-total">Peso total (lbs)</label>
-                <input type="number" id="current-total" min="0" step="100" >
-                <div id="total-info" class="info-label"></div>
-            </div>
-            
-            <div class="input-group">
-                <label for="current-trailer">Trailer (lbs) <small>(Calculado si no se ingresa)</small></label>
-                <input type="number" id="current-trailer" min="0" step="100" >
-                <div id="trailer-info" class="info-label"></div>
-            </div>
-            
-            <button class="btn-clear" id="btn-clear">Limpiar valores actuales</button>
         </div>
-        
-        <!-- Sección de resultados -->
-        <div class="result-display grange" id="result-display">
-            Peso total: <span id="total-weight">0</span> lbs
+
+        <!-- Sección RIFERS -->
+        <div id="section-rifers" class="mode-section">
+            <div class="section">
+                <h2 class="section-title">LÍMITES MÁXIMOS - RIFERS</h2>
+                
+                <div class="input-group">
+                    <label for="rifers-max-front">Eje delantero (lbs)</label>
+                    <input type="number" id="rifers-max-front" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-max-fifth">Quinta rueda (lbs)</label>
+                    <input type="number" id="rifers-max-fifth" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-max-tractor">Tractor (lbs)</label>
+                    <input type="number" id="rifers-max-tractor" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-max-trailer">Trailer (lbs)</label>
+                    <input type="number" id="rifers-max-trailer" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-min-total">Peso mínimo total (lbs)</label>
+                    <input type="number" id="rifers-min-total" min="0" step="100">
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-max-total">Peso máximo total (lbs)</label>
+                    <input type="number" id="rifers-max-total" min="0" step="100">
+                </div>
+                
+                <div class="save-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rifers-save-limits" checked>
+                        <label for="rifers-save-limits">Recordar estos valores</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section calculation-section">
+                <h2 class="section-title">DATOS DE CARGA ACTUAL - RIFERS</h2>
+                
+                <div class="input-group">
+                    <label for="rifers-current-front">Eje trasero (lbs)</label>
+                    <input type="number" id="rifers-current-front" min="0" step="100">
+                    <div id="rifers-front-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-current-tractor">Tractor (lbs)</label>
+                    <input type="number" id="rifers-current-tractor" min="0" step="100">
+                    <div id="rifers-tractor-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-current-fifth">Quinta rueda (lbs) <small>(Calculado)</small></label>
+                    <input type="number" id="rifers-current-fifth" min="0" step="100" readonly class="calculated">
+                    <div id="rifers-fifth-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-current-total">Peso total (lbs)</label>
+                    <input type="number" id="rifers-current-total" min="0" step="100">
+                    <div id="rifers-total-info" class="info-label"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="rifers-current-trailer">Trailer (lbs) <small>(Calculado si no se ingresa)</small></label>
+                    <input type="number" id="rifers-current-trailer" min="0" step="100">
+                    <div id="rifers-trailer-info" class="info-label"></div>
+                </div>
+                
+                <button class="btn-clear" id="rifers-btn-clear">Limpiar valores actuales</button>
+            </div>
+            
+            <div class="result-display grange" id="rifers-result-display">
+                Peso total: <span id="rifers-total-weight">0</span> lbs
+            </div>
         </div>
     </div>
     
