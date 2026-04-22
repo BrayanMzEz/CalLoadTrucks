@@ -386,6 +386,29 @@ input.locked {
     transform: translateY(-2px);
 }
 
+.mode-thumbnail {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+    padding: 6px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-card);
+}
+
+.mode-thumbnail-image {
+    width: 100%;
+    height: 120px;
+    max-height: none;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    padding: 4px;
+}
+
 .mode-section {
     display: none;
 }
@@ -437,5 +460,9 @@ input.locked {
         padding: 8px 14px;
         min-width: 75px;
         font-size: 0.8rem;
+    }
+
+    .mode-thumbnail-image {
+        height: 110px;
     }
 }

@@ -6,6 +6,8 @@
     <meta name="theme-color" content="#0f1419">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" href="images/Truck.png">
+    <link rel="apple-touch-icon" href="images/Truck.png">
     <title>Calculadora de Peso para Trailers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +16,6 @@
 <body>
     <header>
         <h1>Calculadora de Peso para Trailers</h1>
-        <p>Optimizada para uso móvil iOS</p>
         <div class="button-container">
             <button id="btn-papera" class="top-button active">Papera</button>
             <button id="btn-hopper" class="top-button">Hopper</button>
@@ -26,6 +27,9 @@
     <div class="container">
         <!-- Sección PAPERA -->
         <div id="section-papera" class="mode-section active">
+            <div class="mode-thumbnail">
+                <img src="images/Papera.png" alt="Miniatura del modo Papera" class="mode-thumbnail-image" loading="lazy">
+            </div>
             <div class="section">
                 <h2 class="section-title">LÍMITES MÁXIMOS - PAPERA</h2>
                 
@@ -110,6 +114,9 @@
 
         <!-- Sección HOPPER -->
         <div id="section-hopper" class="mode-section">
+            <div class="mode-thumbnail">
+                <img src="images/Hopper.png" alt="Miniatura del modo Hopper" class="mode-thumbnail-image" loading="lazy">
+            </div>
             <div class="section">
                 <h2 class="section-title">LÍMITES MÁXIMOS - HOPPER</h2>
                 
@@ -216,6 +223,9 @@
 
         <!-- Sección RIFERS -->
         <div id="section-rifers" class="mode-section">
+            <div class="mode-thumbnail">
+                <img src="images/Termo.png" alt="Miniatura del modo Rifers" class="mode-thumbnail-image" loading="lazy">
+            </div>
             <div class="section">
                 <h2 class="section-title">LÍMITES MÁXIMOS - RIFERS</h2>
                 
